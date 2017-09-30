@@ -1,6 +1,6 @@
 require recipes-bsp/u-boot/u-boot.inc
 
-DEPENDS += "dtc-native"
+DEPENDS += "bc-native dtc-native"
 
 UBOOTURI ?= "git://github.com/digilent/u-boot-digilent.git;protocol=https"
 UBRANCH ?= "master"
