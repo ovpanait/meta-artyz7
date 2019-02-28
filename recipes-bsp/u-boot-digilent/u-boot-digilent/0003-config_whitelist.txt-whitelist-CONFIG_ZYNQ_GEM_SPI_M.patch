@@ -1,0 +1,40 @@
+From cbc731d4c2767ce5d91daa4335d908d09c313649 Mon Sep 17 00:00:00 2001
+From: Ovidiu Panait <ovidiu.panait@windriver.com>
+Date: Thu, 28 Feb 2019 09:39:37 +0200
+Subject: [PATCH] config_whitelist.txt: whitelist CONFIG_ZYNQ_GEM_SPI_MAC_OFFSET and CONFIG_ZYNQ_USB
+
+Work around the following build error:
+| Error: You must add new CONFIG options using Kconfig
+| The following new ad-hoc CONFIG options were detected:
+| CONFIG_ZYNQ_GEM_SPI_MAC_OFFSET
+| CONFIG_ZYNQ_USB
+|
+| Please add these via Kconfig instead. Find a suitable Kconfig
+| file and add a 'config' or 'menuconfig' option.
+
+Signed-off-by: Ovidiu Panait <ovidiu.panait@windriver.com>
+---
+ scripts/config_whitelist.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/scripts/config_whitelist.txt b/scripts/config_whitelist.txt
+index 3b787eaf40..488d17951e 100644
+--- a/scripts/config_whitelist.txt
++++ b/scripts/config_whitelist.txt
+@@ -8034,6 +8034,7 @@ CONFIG_ZYNQ_EEPROM
+ CONFIG_ZYNQ_EEPROM_BUS
+ CONFIG_ZYNQ_GEM_EEPROM_ADDR
+ CONFIG_ZYNQ_GEM_I2C_MAC_OFFSET
++CONFIG_ZYNQ_GEM_SPI_MAC_OFFSET
+ CONFIG_ZYNQ_HISPD_BROKEN
+ CONFIG_ZYNQ_I2C0
+ CONFIG_ZYNQ_I2C1
+@@ -8044,4 +8045,5 @@ CONFIG_ZYNQ_SDHCI1
+ CONFIG_ZYNQ_SDHCI_MAX_FREQ
+ CONFIG_ZYNQ_SDHCI_MIN_FREQ
+ CONFIG_ZYNQ_SERIAL
++CONFIG_ZYNQ_USB
+ CONFIG_eTSEC_MDIO_BUS
+-- 
+2.20.1
+
