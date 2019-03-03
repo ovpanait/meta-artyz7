@@ -36,6 +36,11 @@ echo 'MACHINE="arty-zynq7"' >> conf/local.conf
 bitbake core-image-minimal
 ```
 
+### Copy image to sd-card
+```sh
+sudo dd if=tmp/deploy/images/arty-zynq7/core-image-minimal-arty-zynq7.wic of=/dev/mmcblkX bs=4M iflag=fullblock oflag=direct conv=fsync status=progress
+```
+
 ## Maintainer(s)
 
 * Ovidiu Panait `<ovpanait@gmail.com>`
