@@ -1,9 +1,10 @@
 # meta-artyz7
-OpenEmbedded/Yocto layer for Arty-Z7 board
+OpenEmbedded/Yocto layer for Arty-Z7 board  
 
+[![pipeline status](https://gitlab.com/ovpanait/meta-artyz7/badges/thud/pipeline.svg)](https://gitlab.com/ovpanait/meta-artyz7/commits/thud)
 
 I could not find support for this board integrated in meta-xilinx upstream, only Petalinux wrappers provided by Digilent.  
-Therefore, I created this simple Yocto layer, based on the existing implementations for similar boards (e.g. Zybo Z7) present in meta-xilinx.
+Therefore, I created this simple Yocto layer, based on the existing meta-xilinx implementations for similar boards (e.g. Zybo Z7).
 
 ## Dependencies
 
