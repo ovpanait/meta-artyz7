@@ -7,5 +7,3 @@ LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://README;beginline=1;endline=6;md5=157ab8408beab40cd8ce1dc69f702a6c"
 
 PROVIDES_${PN} += "virtual/bootloader"
-
-#UBOOT_ELF = "u-boot"

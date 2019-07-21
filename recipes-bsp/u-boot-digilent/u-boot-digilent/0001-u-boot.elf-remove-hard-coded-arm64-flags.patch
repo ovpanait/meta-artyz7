@@ -1,0 +1,73 @@
+From c8a385d47fdb9e781d19618df82945311ba22401 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=81lvaro=20Fern=C3=A1ndez=20Rojas?= <noltari@gmail.com>
+Date: Thu, 20 Apr 2017 20:36:25 +0200
+Subject: [PATCH] u-boot.elf: remove hard-coded arm64 flags
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is needed in order to allow building it for other archs.
+Move relocation comment to a better place.
+Remove no longer needed dts FIXME.
+
+Upstream-Status: Backport [https://github.com/u-boot/u-boot.git]
+
+Signed-off-by: Álvaro Fernández Rojas <noltari@gmail.com>
+Reviewed-by: Tom Rini <trini@konsulko.com>
+Signed-off-by: Ovidiu Panait <ovpanait@gmail.com>
+---
+ Makefile           | 12 +++++-------
+ arch/arm/config.mk |  6 ++++++
+ 2 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 262df7cd63..40df752d7e 100755
+--- a/Makefile
++++ b/Makefile
+@@ -739,6 +739,9 @@ BOARD_SIZE_CHECK =
+ endif
+ 
+ # Statically apply RELA-style relocations (currently arm64 only)
++# This is useful for arm64 where static relocation needs to be performed on
++# the raw binary, but certain simulators only accept an ELF file (but don't
++# do the relocation).
+ ifneq ($(CONFIG_STATIC_RELA),)
+ # $(1) is u-boot ELF, $(2) is u-boot bin, $(3) is text base
+ DO_STATIC_RELA = \
+@@ -1163,14 +1166,9 @@ OBJCOPYFLAGS_u-boot-img-spl-at-end.bin := -I binary -O binary \
+ u-boot-img-spl-at-end.bin: u-boot.img spl/u-boot-spl.bin FORCE
+ 	$(call if_changed,pad_cat)
+ 
+-# Create a new ELF from a raw binary file.  This is useful for arm64
+-# where static relocation needs to be performed on the raw binary,
+-# but certain simulators only accept an ELF file (but don't do the
+-# relocation).
+-# FIXME refactor dts/Makefile to share target/arch detection
++# Create a new ELF from a raw binary file.
+ u-boot.elf: u-boot.bin
+-	@$(OBJCOPY)  -B aarch64 -I binary -O elf64-littleaarch64 \
+-		$< u-boot-elf.o
++	@$(OBJCOPY) -I binary $(PLATFORM_ELFFLAGS) $< u-boot-elf.o
+ 	@$(LD) u-boot-elf.o -o $@ \
+ 		--defsym=_start=$(CONFIG_SYS_TEXT_BASE) \
+ 		-Ttext=$(CONFIG_SYS_TEXT_BASE)
+diff --git a/arch/arm/config.mk b/arch/arm/config.mk
+index 3a81f131e2..089918dfc5 100644
+--- a/arch/arm/config.mk
++++ b/arch/arm/config.mk
+@@ -30,6 +30,12 @@ PLATFORM_RELFLAGS	+= $(LLVM_RELFLAGS)
+ 
+ PLATFORM_CPPFLAGS += -D__ARM__
+ 
++ifdef CONFIG_ARM64
++PLATFORM_ELFFLAGS += -B aarch64 -O elf64-littleaarch64
++else
++PLATFORM_ELFFLAGS += -B arm -O elf32-littlearm
++endif
++
+ # Choose between ARM/Thumb instruction sets
+ ifeq ($(CONFIG_SYS_THUMB_BUILD),y)
+ AFLAGS_IMPLICIT_IT	:= $(call as-option,-Wa$(comma)-mimplicit-it=always)
+-- 
+2.17.1
+
