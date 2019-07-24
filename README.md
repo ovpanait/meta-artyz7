@@ -11,21 +11,29 @@ Therefore, I created this simple Yocto layer, based on the existing meta-xilinx 
 This layer depends on:
 
 * URI: git://git.yoctoproject.org/poky
-  * branch: thud
+  * branch: master
   * revision: HEAD
 * URI: git://github.com/Xilinx/meta-xilinx
-  * branch: thud
+  * branch: master-next
+  * revision: HEAD
+* URI: git://github.com/openembedded/meta-openembedded
+  * branch: master
   * revision: HEAD
 
 ## Quick Start
 
 ### Setup
 ```sh
-git clone -b thud git://git.yoctoproject.org/poky
-git clone -b thud git://github.com/Xilinx/meta-xilinx
-git clone -b thud git://github.com/ovpanait/meta-artyz7
+git clone -b master git://git.yoctoproject.org/poky
+# Needed by meta-xilinx-bsp
+git clone -b master git://github.com/openembedded/meta-openembedded
+# The master branch of meta-xilinx is broken for now, master-next is the up-to-date one
+git clone -b master-next git://github.com/Xilinx/meta-xilinx
+git clone -b master git://github.com/ovpanait/meta-artyz7
 
 . poky/oe-init-build-env
+bitbake-layers add-layer ../meta-openembedded/meta-oe/
+echo 'LAYERSERIES_COMPAT_xilinx += "warrior"' >> ../meta-xilinx/meta-xilinx-bsp/conf/layer.conf
 bitbake-layers add-layer ../meta-xilinx/meta-xilinx-bsp/
 bitbake-layers add-layer ../meta-artyz7
 echo 'MACHINE="arty-zynq7"' >> conf/local.conf
