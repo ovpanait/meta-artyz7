@@ -21,5 +21,6 @@ build1:
     - echo 'LAYERSERIES_COMPAT_xilinx += "warrior"' >> ../meta-xilinx/meta-xilinx-bsp/conf/layer.conf
     - bitbake-layers add-layer ../meta-xilinx/meta-xilinx-bsp/
     - bitbake-layers add-layer ../meta-artyz7
+    - echo 'INHERIT += "rm_work"' >> conf/local.conf
     - echo 'MACHINE="arty-zynq7"' >> conf/local.conf
     - bitbake core-image-minimal
