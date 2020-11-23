@@ -13,6 +13,9 @@ SRC_URI = "\
     file://0003-config_whitelist.txt-whitelist-CONFIG_ZYNQ_GEM_SPI_M.patch \
     file://0001-u-boot.elf-remove-hard-coded-arm64-flags.patch \
     file://0001-arm-zynq-Enable-CONFIG_REMAKE_ELF.patch \
+    file://0001-scripts-Makefile.lib-remove-overridden-target-obj-he.patch \
+    file://0001-Add-target-to-generate-initial-environment.patch \
     "
 
 S = "${WORKDIR}/git"
+B = "${WORKDIR}/build"

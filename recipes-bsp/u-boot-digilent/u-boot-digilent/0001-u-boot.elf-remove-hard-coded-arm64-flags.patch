@@ -1,4 +1,4 @@
-From c8a385d47fdb9e781d19618df82945311ba22401 Mon Sep 17 00:00:00 2001
+From b1d8c73554d8af35b3b6ccf551afb159f3f21ef4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=81lvaro=20Fern=C3=A1ndez=20Rojas?= <noltari@gmail.com>
 Date: Thu, 20 Apr 2017 20:36:25 +0200
 Subject: [PATCH] u-boot.elf: remove hard-coded arm64 flags
@@ -15,6 +15,7 @@ Upstream-Status: Backport [https://github.com/u-boot/u-boot.git]
 Signed-off-by: Álvaro Fernández Rojas <noltari@gmail.com>
 Reviewed-by: Tom Rini <trini@konsulko.com>
 Signed-off-by: Ovidiu Panait <ovpanait@gmail.com>
+
 ---
  Makefile           | 12 +++++-------
  arch/arm/config.mk |  6 ++++++
@@ -68,6 +69,3 @@ index 3a81f131e2..089918dfc5 100644
  # Choose between ARM/Thumb instruction sets
  ifeq ($(CONFIG_SYS_THUMB_BUILD),y)
  AFLAGS_IMPLICIT_IT	:= $(call as-option,-Wa$(comma)-mimplicit-it=always)
--- 
-2.17.1
-

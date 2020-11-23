@@ -1,4 +1,4 @@
-From c9a8bc6460a0ee435a18395db3015a572a16cd97 Mon Sep 17 00:00:00 2001
+From f96f60716a14a814ebc5184fca5f3ab19ea16254 Mon Sep 17 00:00:00 2001
 From: Masahiro Yamada <yamada.masahiro@socionext.com>
 Date: Mon, 5 Mar 2018 01:20:11 +0900
 Subject: [PATCH] libfdt: move headers to <linux/libfdt.h> and
@@ -20,6 +20,7 @@ Reported-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 OP: adjusted context and adapted tools/Makefile
 Signed-off-by: Ovidiu Panait <ovidiu.panait@windriver.com>
+
 ---
  arch/arm/cpu/armv7/ls102xa/fdt.c                  | 2 +-
  arch/arm/cpu/armv7/virt-dt.c                      | 2 +-
@@ -2130,7 +2131,7 @@ index 06943a9702..3e27b5b6b5 100644
  #include <asm/global_data.h>
  #include <asm-generic/sections.h>
 diff --git a/cmd/fdt.c b/cmd/fdt.c
-index 8bd345afa8..d82a03b6d7 100644
+index 6883e754ed..5c105c3bbc 100644
 --- a/cmd/fdt.c
 +++ b/cmd/fdt.c
 @@ -13,7 +13,7 @@
@@ -2377,7 +2378,7 @@ index 0a22e58295..0585e627cb 100644
  #include <malloc.h>
  
 diff --git a/drivers/mmc/zynq_sdhci.c b/drivers/mmc/zynq_sdhci.c
-index 089a424ec5..8a294d3ba4 100644
+index 454d3cb9ae..05352bedbe 100644
 --- a/drivers/mmc/zynq_sdhci.c
 +++ b/drivers/mmc/zynq_sdhci.c
 @@ -9,7 +9,7 @@
@@ -2801,7 +2802,7 @@ index 95aa590c8a..a69a67465e 100644
  #include <inttypes.h>
  #include <watchdog.h>
 diff --git a/lib/fdtdec.c b/lib/fdtdec.c
-index 81f47ef2c7..a4f78246df 100644
+index 7bef63d699..abd81ecabe 100644
 --- a/lib/fdtdec.c
 +++ b/lib/fdtdec.c
 @@ -8,7 +8,7 @@
@@ -2907,7 +2908,7 @@ index 6fde1eb9ed..e6ca82c162 100644
  #include "libfdt_internal.h"
  
 diff --git a/lib/libfdt/fdt_overlay.c b/lib/libfdt/fdt_overlay.c
-index bb41404129..3203f11b14 100644
+index ceb968786e..6e787b910c 100644
 --- a/lib/libfdt/fdt_overlay.c
 +++ b/lib/libfdt/fdt_overlay.c
 @@ -1,7 +1,7 @@
@@ -2956,7 +2957,7 @@ index 1be9538fd2..d972d031c6 100644
  #include "fdt_host.h"
  #endif
 diff --git a/lib/libfdt/fdt_rw.c b/lib/libfdt/fdt_rw.c
-index 87d4030fb1..708c15ccb9 100644
+index 80a3212141..af4ccf0a85 100644
 --- a/lib/libfdt/fdt_rw.c
 +++ b/lib/libfdt/fdt_rw.c
 @@ -3,11 +3,11 @@
@@ -2974,7 +2975,7 @@ index 87d4030fb1..708c15ccb9 100644
  #include "fdt_host.h"
  #endif
 diff --git a/lib/libfdt/fdt_strerror.c b/lib/libfdt/fdt_strerror.c
-index 7f8e02b1ee..5475cf2ee5 100644
+index f89004c609..b2e6129930 100644
 --- a/lib/libfdt/fdt_strerror.c
 +++ b/lib/libfdt/fdt_strerror.c
 @@ -3,11 +3,11 @@
@@ -3092,6 +3093,3 @@ index 195b1533ab..c805597744 100644
  #include "ifdtool.h"
  
  #undef DEBUG
--- 
-2.20.1
-

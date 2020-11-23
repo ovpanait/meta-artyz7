@@ -1,4 +1,4 @@
-From f2195e3a62f9115eacfb3f2ad2d65f2577610fdc Mon Sep 17 00:00:00 2001
+From d2aa1ab804fec69651527340b33a6b4b4fbf0b20 Mon Sep 17 00:00:00 2001
 From: Jelle van der Waa <jelle@vdwaa.nl>
 Date: Mon, 8 May 2017 21:31:19 +0200
 Subject: [PATCH] rsa: Fix build with OpenSSL 1.1.x
@@ -10,6 +10,7 @@ EVP_MD_CTX_cleanup has been removed in 1.1.x and EVP_MD_CTX_reset should be
 called to reinitialise an already created structure.
 
 Signed-off-by: Ovidiu Panait <ovidiu.panait@windriver.com>
+
 ---
  lib/rsa/rsa-sign.c | 42 ++++++++++++++++++++++++++++++++++++------
  1 file changed, 36 insertions(+), 6 deletions(-)
@@ -146,6 +147,3 @@ index 9a09280013..90516f783b 100644
  	    !BN_set_word(big2, 2L) || !BN_set_word(big32, 32L))
  		ret = -1;
  
--- 
-2.20.1
-

@@ -1,7 +1,8 @@
-From cbc731d4c2767ce5d91daa4335d908d09c313649 Mon Sep 17 00:00:00 2001
+From aadeca714ba3436f4311fdc1babd91fb12e07509 Mon Sep 17 00:00:00 2001
 From: Ovidiu Panait <ovidiu.panait@windriver.com>
 Date: Thu, 28 Feb 2019 09:39:37 +0200
-Subject: [PATCH] config_whitelist.txt: whitelist CONFIG_ZYNQ_GEM_SPI_MAC_OFFSET and CONFIG_ZYNQ_USB
+Subject: [PATCH] config_whitelist.txt: whitelist
+ CONFIG_ZYNQ_GEM_SPI_MAC_OFFSET and CONFIG_ZYNQ_USB
 
 Work around the following build error:
 | Error: You must add new CONFIG options using Kconfig
@@ -13,6 +14,7 @@ Work around the following build error:
 | file and add a 'config' or 'menuconfig' option.
 
 Signed-off-by: Ovidiu Panait <ovidiu.panait@windriver.com>
+
 ---
  scripts/config_whitelist.txt | 2 ++
  1 file changed, 2 insertions(+)
@@ -35,6 +37,3 @@ index 3b787eaf40..488d17951e 100644
  CONFIG_ZYNQ_SERIAL
 +CONFIG_ZYNQ_USB
  CONFIG_eTSEC_MDIO_BUS
--- 
-2.20.1
-

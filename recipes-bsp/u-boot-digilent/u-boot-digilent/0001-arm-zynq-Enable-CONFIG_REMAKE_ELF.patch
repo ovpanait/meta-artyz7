@@ -1,4 +1,4 @@
-From 7a3a05fde0ba39e353ec1c844537696eeb1e9e88 Mon Sep 17 00:00:00 2001
+From f3571bee81cd569767ccac6f25499cb54455c6d5 Mon Sep 17 00:00:00 2001
 From: Siva Durga Prasad Paladugu <siva.durga.paladugu@xilinx.com>
 Date: Tue, 22 Jan 2019 14:34:12 +0530
 Subject: [PATCH] arm: zynq: Enable CONFIG_REMAKE_ELF
@@ -12,6 +12,7 @@ Upstream-Status: Backport [https://github.com/u-boot/u-boot.git]
 Signed-off-by: Siva Durga Prasad Paladugu <siva.durga.paladugu@xilinx.com>
 Signed-off-by: Michal Simek <michal.simek@xilinx.com>
 Signed-off-by: Ovidiu Panait <ovpanait@gmail.com>
+
 ---
  include/configs/zynq-common.h | 2 ++
  1 file changed, 2 insertions(+)
@@ -29,6 +30,3 @@ index a38ca05e0d..4320eb46ef 100644
  /* Cache options */
  #define CONFIG_SYS_L2CACHE_OFF
  #ifndef CONFIG_SYS_L2CACHE_OFF
--- 
-2.17.1
-
